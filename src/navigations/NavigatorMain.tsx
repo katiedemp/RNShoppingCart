@@ -21,7 +21,8 @@ const NavigatorMain = (): React.ReactElement => (
       headerTitleStyle: {
         fontWeight: 'bold',
       },
-    }}>
+    }}
+  >
     <MainStack.Screen
       name="Home"
       component={HomeScreen}

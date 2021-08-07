@@ -1,14 +1,11 @@
-import React from 'react';
-import { Button, Icon } from '@ui-kitten/components';
-import Home from '../feature/Home';
-import { SafeAreaView } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { Button, Icon, Layout } from '@ui-kitten/components';
+import React from 'react';
+import { SafeAreaView } from 'react-native';
+import Cart from '../feature/Cart';
 import { RootStackParamsList } from '../navigations/NavigatorMain';
 
-type ProfileScreenNavigationProp = StackNavigationProp<
-  RootStackParamsList,
-  'Cart'
->;
+type ProfileScreenNavigationProp = StackNavigationProp<RootStackParamsList, 'Cart'>;
 
 type Props = {
   navigation: ProfileScreenNavigationProp;
@@ -16,7 +13,7 @@ type Props = {
 
 const LeftIcon = () => <Icon name="arrow-ios-back-outline" />;
 
-function ShoppingCartScreen({ navigation }: Props) {
+const ShoppingCartScreen = ({ navigation }: Props): React.ReactElement => {
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
@@ -25,7 +22,8 @@ function ShoppingCartScreen({ navigation }: Props) {
           appearance="ghost"
           status="control"
           accessoryLeft={LeftIcon}
-          size="large">
+          size="large"
+        >
           Back
         </Button>
       ),
@@ -33,11 +31,12 @@ function ShoppingCartScreen({ navigation }: Props) {
   }, [navigation]);
 
   return (
-    // eslint-disable-next-line react-native/no-inline-styles
-    <SafeAreaView style={{ flex: 1, flexDirection: 'column', width: '100%' }}>
-      <Home />
+    <SafeAreaView style={{ flex: 1 }}>
+      <Layout style={{ flex: 1, flexDirection: 'column', width: '100%' }}>
+        <Cart />
+      </Layout>
     </SafeAreaView>
   );
-}
+};
 
 export default ShoppingCartScreen;

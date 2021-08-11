@@ -5,13 +5,14 @@ import CartList from '../../components/CartList';
 import styles from './style';
 
 const Cart = () => {
+  // if(this.state.value == 'empty')
+  //   return <Text>No items to show</Text>;
   const onPress = () => {
     Alert.alert('Checked out');
   };
 
   return (
     <Layout style={styles.container}>
-      <Text>No items to show</Text>
       <Layout style={styles.list}>
         <CartList title={'Cart'} />
       </Layout>

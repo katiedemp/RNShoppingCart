@@ -20,3 +20,7 @@ export const products = [
     price: 18.45,
   },
 ];
+
+export const getProducts = () => {
+  return products;
+};

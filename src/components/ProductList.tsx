@@ -4,7 +4,7 @@ import { FlatList } from 'react-native-gesture-handler';
 import { products } from '../../data';
 import Item from './Item';
 
-const Products = (): React.ReactElement => {
+const ProductList = (): React.ReactElement => {
   const renderItem = ({ item }: { item: any }) => <Item name={item.name} price={item.price} />;
 
   return (
@@ -28,4 +28,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Products;
+export default ProductList;

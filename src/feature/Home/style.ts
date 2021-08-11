@@ -8,26 +8,21 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     flexDirection: 'column',
   },
-  top: {
-    flex: 2,
+  header: {
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 10,
-    flexDirection: 'column',
+    flexDirection: 'row',
+  },
+  title: {
+    fontSize: 25,
+    fontWeight: 'bold',
   },
   bottom: {
     flex: 3,
   },
   text: {
     textAlign: 'center',
-  },
-  iconButton: {
-    marginVertical: 16,
-  },
-  nativeButton: {
-    alignItems: 'center',
-    backgroundColor: '#DDDDDD',
-    padding: 10,
   },
 });
 

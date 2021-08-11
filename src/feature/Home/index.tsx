@@ -1,25 +1,21 @@
+import { Layout } from '@ui-kitten/components';
 import React from 'react';
-import { Layout, Text } from '@ui-kitten/components';
-import styles from './style';
-import { Component } from 'react';
-import { products } from '../../../Data';
+import { Text } from 'react-native';
 import Products from '../../components/Products';
+import styles from './style';
 
-class Home extends Component {
-  render() {
-    return (
-      <Layout style={styles.container}>
-        <Layout style={styles.top}>
-          <Text>Products Top</Text>
-          <Products products={products} />
-        </Layout>
-        <Layout style={styles.bottom} />
-        <Layout style={styles.bottom}>
-          <Text>Bottom</Text>
-        </Layout>
+const Home = () => {
+  return (
+    <Layout style={styles.container}>
+      <Layout style={styles.header}>
+        <Text>Welcome</Text>
       </Layout>
-    );
-  }
-}
+      <Products />
+      <Layout style={styles.bottom}>
+        <Text>Bottom</Text>
+      </Layout>
+    </Layout>
+  );
+};
 
 export default Home;

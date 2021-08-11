@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StatusBar, StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -7,9 +7,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 10,
     flexDirection: 'column',
+    marginTop: StatusBar.currentHeight || 0,
   },
-  header: {
-    flex: 1,
+  list: {
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',

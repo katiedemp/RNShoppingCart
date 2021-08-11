@@ -9,10 +9,8 @@ const ProductList = (): React.ReactElement => {
 
   return (
     <View style={styles.container}>
-      <View>
-        <Text style={styles.title}>Product List</Text>
-        <FlatList data={products} renderItem={renderItem} keyExtractor={(item) => item.name} />
-      </View>
+      <Text style={styles.title}>Product List</Text>
+      <FlatList data={products} renderItem={renderItem} keyExtractor={(item) => item.name} />
     </View>
   );
 };
@@ -24,6 +22,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 28,
+    fontWeight: 'bold',
     textAlign: 'center',
   },
 });

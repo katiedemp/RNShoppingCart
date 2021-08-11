@@ -3,8 +3,8 @@ import { Button, StyleSheet, Text, View } from 'react-native';
 
 const Item = ({ name, price }: { name: string; price: string }) => {
   const [count, setCount] = useState(0);
-    const onPress = () => setCount(count + 1);
-    const amount = parseFloat(price).toFixed(2);
+  const onPress = () => setCount(count + 1);
+  const amount = parseFloat(price).toFixed(2);
 
   return (
     <View style={styles.item}>
@@ -23,8 +23,17 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     marginHorizontal: 16,
   },
-  name: { fontSize: 24 },
-  price: { fontSize: 18 },
+  name: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    padding: 5,
+    textAlign: 'center',
+  },
+  price: {
+    fontSize: 18,
+    padding: 10,
+    textAlign: 'center',
+  },
 });
 
 export default Item;

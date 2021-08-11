@@ -7,10 +7,9 @@ import styles from './style';
 const Home = () => {
   return (
     <Layout style={styles.container}>
-      <Layout style={styles.header}>
-        <Text>Welcome</Text>
+      <Layout>
+        <Products />
       </Layout>
-      <Products />
       <Layout style={styles.bottom}>
         <Text>Bottom</Text>
       </Layout>

@@ -3,31 +3,29 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 10,
     flexDirection: 'column',
   },
-  top: {
+  list: {
     flex: 2,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 10,
-    flexDirection: 'column',
+    flexDirection: 'row',
   },
   bottom: {
-    flex: 3,
+    flex: 0,
+    paddingBottom: 5,
+    width: '100%',
+  },
+  hairline: {
+    backgroundColor: '#A2A2A2',
+    height: 2,
+    marginBottom: 5,
+    marginTop: 5,
+    width: '100%',
   },
   text: {
     textAlign: 'center',
-  },
-  iconButton: {
-    marginVertical: 16,
-  },
-  nativeButton: {
-    alignItems: 'center',
-    backgroundColor: '#DDDDDD',
-    padding: 10,
   },
 });
 

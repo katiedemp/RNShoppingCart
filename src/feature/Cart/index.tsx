@@ -1,15 +1,26 @@
-import React, { Component } from 'react';
-import { View } from 'react-native';
-import { Text } from '@ui-kitten/components';
+import { Layout, Text } from '@ui-kitten/components';
+import React from 'react';
+import { Alert, Button } from 'react-native';
+import CartList from '../../components/CartList';
+import styles from './style';
 
-class Cart extends Component {
-    render() {
-        return (
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <Text>Cart</Text>
-            </View>
-        )
-    }
+const Cart = () => {
+  const onPress = () => {
+    Alert.alert('Checked out');
+  };
+
+  return (
+    <Layout style={styles.container}>
+      <Text>No items to show</Text>
+      <Layout style={styles.list}>
+        <CartList title={'Cart'} />
+      </Layout>
+      <Layout style={styles.bottom}>
+        <Layout style={styles.hairline} />
+        <Button title="Checkout" onPress={onPress} />
+      </Layout>
+    </Layout>
+  );
 };
 
 export default Cart;

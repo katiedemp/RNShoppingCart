@@ -4,12 +4,12 @@ import { FlatList } from 'react-native-gesture-handler';
 import { products } from '../../data';
 import Item from './Item';
 
-const ProductList = (): React.ReactElement => {
+const ItemList = ({ title }: { title: string }): React.ReactElement => {
   const renderItem = ({ item }: { item: any }) => <Item name={item.name} price={item.price} />;
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Product List</Text>
+      <Text style={styles.title}>{title}</Text>
       <FlatList data={products} renderItem={renderItem} keyExtractor={(item) => item.name} />
     </View>
   );
@@ -27,4 +27,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ProductList;
+export default ItemList;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
 
-const Item = ({ name, price }: { name: string; price: string }) => {
+const Item = ({ name, price }: { name: string; price: string; }) => {
   const [count, setCount] = useState(0);
   const onPress = () => setCount(count + 1);
   const amount = parseFloat(price).toFixed(2);

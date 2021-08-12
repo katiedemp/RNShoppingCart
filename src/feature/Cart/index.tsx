@@ -5,18 +5,22 @@ import { Alert, Button } from 'react-native';
 import { connect } from 'react-redux';
 import CartList from '../../components/CartList';
 import styles from './style';
+import { emptyCart } from '../../redux/actions/cartActions';
 
 interface CartProps {
   title?: string;
   cartItems: any;
   cartTotal: number;
+  emptyCart: any;
 }
 
 interface CartState {}
 
 export class Cart extends Component<CartProps, CartState> {
   onPress = () => {
+    const { emptyCart } = this.props;
     Alert.alert('Checked out');
+    emptyCart();
   };
 
   render() {
@@ -45,4 +49,4 @@ const mapStateToProps = (state: { cart: { cart: any; total: any } }) => ({
   cartTotal: state.cart.total,
 });
 
-export default connect(mapStateToProps)(Cart);
+export default connect(mapStateToProps, {emptyCart})(Cart);

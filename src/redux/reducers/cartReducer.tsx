@@ -9,13 +9,7 @@ export default function (
   state = initialState,
   action: {
     type: any;
-    payload: {
-      price: number;
-      index: number;
-      name: string;
-      qty: number;
-      total: number;
-    };
+    payload: { name: any; price: number; index: number; item: { total: number; }; }
   }
 ) {
   switch (action.type) {
@@ -66,7 +60,7 @@ export default function (
       return {
         ...state,
         cartItems: state.cartItems.filter((item, i) => i !== action.payload.index),
-        total: state.total - action.payload.item.price,
+        total: state.total - action.payload.item.total,
       };
     default:
       return state;

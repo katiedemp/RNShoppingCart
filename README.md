@@ -2,7 +2,7 @@
 
 This is a basic shopping mobile app written in React-Native, Redux & TypeScript
 
-![alt-text](link)
+![alt-text](https://github.com/katiedemp/RNShoppingCart/blob/e04d92d9f29ba9c4613c647d9c94721a401cb6f5/images/Android.gif)
 
 ## Features
 A shopping list and checkout using

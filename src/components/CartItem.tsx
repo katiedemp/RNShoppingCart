@@ -1,31 +1,71 @@
-import React from 'react';
-import { Alert, Button, StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import { Alert, StyleSheet, Text, View } from 'react-native';
+import Swipeout from 'react-native-swipeout';
+import { connect } from 'react-redux';
+import { removeItem } from '../redux/actions/cartActions';
 
-const CartItem = ({
-  name,
-  price,
-  buttonTitle,
-}: {
-  name: string;
-  price: string;
+interface CartProps {
+  item: any;
+  index: any;
   buttonTitle: string;
-}) => {
-  const amount = parseFloat(price).toFixed(2);
+  removeItem?: any;
+}
 
-  const onPress = () => {
-    Alert.alert('Removed item');
+interface CartState {}
+
+class CartItem extends Component<CartProps, CartState> {
+  state = {
+    activeRowKey: null,
   };
 
-  return (
-    <View style={styles.item}>
-      <Text style={styles.name}>{name} </Text>
-      <Text style={styles.price}>${amount}</Text>
-      <Text style={styles.price}>Qty: </Text>
-      <Text style={styles.price}>Total $ </Text>
-      <Button title={buttonTitle} onPress={onPress} />
-    </View>
-  );
-};
+  render() {
+    const swipeSettings = {
+      autoClose: true,
+      onClose: (sectionId: number, rowId: number, direction: string) => {
+        this.setState({ activeRowKey: null });
+      },
+      onOpen: (sectionId: number, rowId: number, direction: string) => {
+        this.setState({ activeRowKey: this.props.item.id });
+      },
+      right: [
+        {
+          onPress: () => {
+            const deleteRow = this.state.activeRowKey;
+            Alert.alert(
+              'Alert',
+              'Are you sure you want to delete?',
+              [
+                { text: 'No', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
+                {
+                  text: 'Yes',
+                  onPress: () => {
+                    this.props.removeItem({ index: this.props.index, item: this.props.item });
+                  },
+                },
+              ],
+              { cancelable: true }
+            );
+          },
+          text: 'Delete',
+          type: 'delete',
+        },
+      ],
+      rowId: this.props.index,
+      sectionId: 1,
+    };
+    const { item, index, buttonTitle } = this.props;
+    return (
+      <Swipeout {...swipeSettings}>
+        <View style={styles.item}>
+          <Text style={styles.name}>{item.name} </Text>
+          <Text style={styles.price}>${item.price}</Text>
+          <Text style={styles.price}>Qty: {item.qty}</Text>
+          <Text style={styles.price}>Total $ {item.total}</Text>
+        </View>
+      </Swipeout>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   item: {
@@ -47,4 +87,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CartItem;
+export default connect(null, { removeItem })(CartItem);

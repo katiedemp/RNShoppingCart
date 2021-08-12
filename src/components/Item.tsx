@@ -1,20 +1,30 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
 
-const Item = ({ name, price }: { name: string; price: string; }) => {
-  const [count, setCount] = useState(0);
-  const onPress = () => setCount(count + 1);
-  const amount = parseFloat(price).toFixed(2);
+interface ProductProps {
+  item?: any;
+  product?: any;
+  addItemsToCart?: any;
+}
 
-  return (
-    <View style={styles.item}>
-      <Text style={styles.name}>{name} </Text>
-      <Text style={styles.price}>${amount}</Text>
-      <Button title="Add to cart" onPress={onPress} />
-      <Text>{count ? count : null}</Text>
-    </View>
-  );
-};
+interface ProductsState {}
+
+class Item extends Component<ProductProps, ProductsState> {
+  addToCart = () => {
+    this.props.addItemsToCart(this.props.item);
+  };
+
+  render() {
+    const { product } = this.props;
+    return (
+      <View style={styles.item}>
+        <Text style={styles.name}>{product.name} </Text>
+        <Text style={styles.price}>${(product.price).toFixed(2)}</Text>
+        <Button title="Add to cart" onPress={this.addToCart} />
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   item: {

@@ -1,19 +1,39 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StatusBar, StyleSheet, Text, View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
-import { products } from '../../data';
+import { connect } from 'react-redux';
 import CartItem from './CartItem';
 
-const CartList = ({ title }: { title: string }): React.ReactElement => {
-    const renderItem = ({ item }: { item: any }) => <CartItem name={item.name} price={item.price} buttonTitle={'Remove from cart'} />;
+interface CartProps {
+  title: string;
+  cartItems: any;
+  cartTotal: number;
+}
 
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>{title}</Text>
-      <FlatList data={products} renderItem={renderItem} keyExtractor={(item) => item.name} />
-    </View>
+interface CartState {}
+
+class CartList extends Component<CartProps, CartState> {
+  renderItem = ({ item, index }: { item: any; index: any }) => (
+    <CartItem item={item} index={index} buttonTitle={'Remove from cart'} />
   );
-};
+
+  render() {
+    const { title, cartItems, cartTotal } = this.props;
+    return (
+      <View style={styles.container}>
+        <View style={styles.container}>
+          <Text style={styles.title}>{title}</Text>
+          <FlatList
+            data={cartItems}
+            renderItem={this.renderItem}
+            keyExtractor={(item) => item.name}
+          />
+          <Text style={styles.text}>Total: $ {cartTotal.toFixed(2)}</Text>
+        </View>
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -25,6 +45,15 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
+  text: {
+    textAlign: 'center',
+    fontSize: 18,
+  },
 });
 
-export default CartList;
+const mapStateToProps = (state: { cart: { cart: any; total: any } }) => ({
+  cartItems: state.cart.cart,
+  cartTotal: state.cart.total,
+});
+
+export default connect(mapStateToProps)(CartList);

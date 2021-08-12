@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { removeItem } from '../redux/actions/cartActions';
 
 interface CartProps {
-  item: any;
+  item: { id: number; name: string; price: number; qty: number; total: number };
   index: any;
   buttonTitle: string;
   removeItem?: any;
@@ -58,9 +58,9 @@ class CartItem extends Component<CartProps, CartState> {
       <Swipeout {...swipeSettings}>
         <View style={styles.item}>
           <Text style={styles.name}>{item.name} </Text>
-          <Text style={styles.price}>${item.price}</Text>
+          <Text style={styles.price}>${item.price.toFixed(2)}</Text>
           <Text style={styles.price}>Qty: {item.qty}</Text>
-          <Text style={styles.price}>Total $ {item.total}</Text>
+          <Text style={styles.price}>Total ${item.total}</Text>
         </View>
       </Swipeout>
     );

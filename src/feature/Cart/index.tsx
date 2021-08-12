@@ -20,11 +20,16 @@ export class Cart extends Component<CartProps, CartState> {
   };
 
   render() {
-    const { cartItems, cartTotal } = this.props;
+    const cartListProps = {
+      title: 'Cart',
+      cartItems: this.props.cartItems,
+      cartTotal: this.props.cartTotal,
+    };
+
     return (
       <Layout style={styles.container}>
         <Layout style={styles.list}>
-          <CartList title={'Cart'} cartItems={cartItems} cartTotal={cartTotal} />
+          <CartList {...cartListProps} />
         </Layout>
         <Layout style={styles.bottom}>
           <Layout style={styles.hairline} />

@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = (state: { cart: { cartItems: any[]; total: any } }) => ({
+const mapStateToProps = (state: { cart: { cartItems: any[]; total: any; qty: number } }) => ({
   cartItems: state.cart.cartItems,
   cartTotal: state.cart.total,
   cartQty: state.cart.qty,

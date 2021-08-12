@@ -10,7 +10,7 @@ export default function (
   state = initialState,
   action: {
     type: any;
-    payload: { name: any; price: number; qty: number; index: number; item: { total: number; qty: number; }; }
+    payload: { name: any; price: number; index: number; item: { total: number; qty: number } };
   }
 ) {
   switch (action.type) {

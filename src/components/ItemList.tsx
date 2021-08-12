@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { StatusBar, StyleSheet, Text, View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
+import { connect } from 'react-redux';
 import { addToCart } from '../redux/actions/cartActions';
 import { fetchProducts } from '../redux/actions/productAction';
 import Item from './Item';
-import { connect } from 'react-redux';
 
 interface ProductProps {
   title?: string;

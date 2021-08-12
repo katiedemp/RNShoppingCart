@@ -54,7 +54,7 @@ class CartItem extends Component<CartProps, CartState> {
       rowId: this.props.index,
       sectionId: 1,
     };
-    
+
     return (
       <View style={styles.item}>
         <Swipeout {...swipeSettings}>

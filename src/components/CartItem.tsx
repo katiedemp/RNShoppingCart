@@ -60,7 +60,7 @@ class CartItem extends Component<CartProps, CartState> {
           <Text style={styles.name}>{item.name} </Text>
           <Text style={styles.price}>${item.price.toFixed(2)}</Text>
           <Text style={styles.price}>Qty: {item.qty}</Text>
-          <Text style={styles.price}>Total ${item.total}</Text>
+          <Text style={styles.price}>Total ${item.total.toFixed(2)}</Text>
         </View>
       </Swipeout>
     );

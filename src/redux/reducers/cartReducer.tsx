@@ -14,6 +14,8 @@ export default function (
       price: number;
       index: number;
       name: string;
+      qty: number;
+      total: number;
     };
   }
 ) {
@@ -41,7 +43,18 @@ export default function (
       } else {
         return {
           ...state,
-          cartItems: [action.payload, ...state.cartItems],
+          cartItems: [
+            // shallow copy cart items
+            ...state.cartItems,
+            // add new cart item
+            {
+              id: action.payload.id,
+              qty: 1,
+              name: action.payload.name,
+              price: action.payload.price,
+              total: action.payload.price,
+            },
+          ],
           total: state.total + action.payload.price,
         };
       }

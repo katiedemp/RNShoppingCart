@@ -51,8 +51,8 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = (state: { cart: { cart: any; total: any } }) => ({
-  cartItems: state.cart.cart,
+const mapStateToProps = (state: { cart: { cartItems: any[]; total: any } }) => ({
+  cartItems: state.cart.cartItems,
   cartTotal: state.cart.total,
 });
 

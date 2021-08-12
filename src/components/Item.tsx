@@ -19,7 +19,7 @@ class Item extends Component<ProductProps, ProductsState> {
     return (
       <View style={styles.item}>
         <Text style={styles.name}>{product.name} </Text>
-        <Text style={styles.price}>${(product.price).toFixed(2)}</Text>
+        <Text style={styles.price}>${product.price.toFixed(2)}</Text>
         <Button title="Add to cart" onPress={this.addToCart} />
       </View>
     );

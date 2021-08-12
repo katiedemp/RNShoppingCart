@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: 'bold',
     textAlign: 'center',
+    marginBottom: 14,
   },
 });
 const mapStateToProps = (state: { products: { items: any } }) => ({

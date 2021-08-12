@@ -17,13 +17,6 @@ const styles = StyleSheet.create({
     paddingBottom: 5,
     width: '100%',
   },
-  hairline: {
-    backgroundColor: '#A2A2A2',
-    height: 2,
-    marginBottom: 5,
-    marginTop: 5,
-    width: '100%',
-  },
   text: {
     textAlign: 'center',
   },

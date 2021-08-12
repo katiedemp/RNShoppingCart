@@ -1,5 +1,6 @@
+import { Button } from '@ui-kitten/components';
 import React, { Component } from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 interface ProductProps {
   item?: any;
@@ -20,7 +21,9 @@ class Item extends Component<ProductProps, ProductsState> {
       <View style={styles.item}>
         <Text style={styles.name}>{product.name} </Text>
         <Text style={styles.price}>${product.price.toFixed(2)}</Text>
-        <Button title="Add to cart" onPress={this.addToCart} />
+        <Button size="large" onPress={this.addToCart}>
+          Add to cart
+        </Button>
       </View>
     );
   }

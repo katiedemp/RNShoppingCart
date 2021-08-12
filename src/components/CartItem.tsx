@@ -19,6 +19,7 @@ class CartItem extends Component<CartProps, CartState> {
   };
 
   render() {
+    const { item, index, buttonTitle } = this.props;
     const swipeSettings = {
       autoClose: true,
       onClose: (sectionId: number, rowId: number, direction: string) => {
@@ -32,7 +33,7 @@ class CartItem extends Component<CartProps, CartState> {
           onPress: () => {
             const deleteRow = this.state.activeRowKey;
             Alert.alert(
-              'Alert',
+              'Hey!',
               'Are you sure you want to delete?',
               [
                 { text: 'No', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
@@ -53,24 +54,25 @@ class CartItem extends Component<CartProps, CartState> {
       rowId: this.props.index,
       sectionId: 1,
     };
-    const { item, index, buttonTitle } = this.props;
+    
     return (
-      <Swipeout {...swipeSettings}>
-        <View style={styles.item}>
-          <Text style={styles.name}>{item.name} </Text>
-          <Text style={styles.price}>${item.price.toFixed(2)}</Text>
-          <Text style={styles.price}>Qty: {item.qty}</Text>
-          <Text style={styles.price}>Total ${item.total.toFixed(2)}</Text>
-        </View>
-      </Swipeout>
+      <View style={styles.item}>
+        <Swipeout {...swipeSettings}>
+          <View style={styles.item}>
+            <Text style={styles.name}>{item.name} </Text>
+            <Text style={styles.price}>${item.price.toFixed(2)}</Text>
+            <Text style={styles.price}>Qty: {item.qty}</Text>
+            <Text style={styles.price}>Total ${item.total.toFixed(2)}</Text>
+          </View>
+        </Swipeout>
+      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
   item: {
-    backgroundColor: '#D3D3D3',
-    padding: 20,
+    padding: 5,
     marginVertical: 8,
     marginHorizontal: 16,
   },

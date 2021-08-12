@@ -1,11 +1,10 @@
-import { Layout, Text } from '@ui-kitten/components';
-import React from 'react';
-import { Component } from 'react';
-import { Alert, Button } from 'react-native';
+import { Button, Layout } from '@ui-kitten/components';
+import React, { Component } from 'react';
+import { Alert } from 'react-native';
 import { connect } from 'react-redux';
 import CartList from '../../components/CartList';
-import styles from './style';
 import { emptyCart } from '../../redux/actions/cartActions';
+import styles from './style';
 
 interface CartProps {
   title?: string;
@@ -25,7 +24,7 @@ export class Cart extends Component<CartProps, CartState> {
 
   render() {
     const cartListProps = {
-      title: 'Cart',
+      title: 'Your Cart',
       cartItems: this.props.cartItems,
       cartTotal: this.props.cartTotal,
     };
@@ -36,8 +35,9 @@ export class Cart extends Component<CartProps, CartState> {
           <CartList {...cartListProps} />
         </Layout>
         <Layout style={styles.bottom}>
-          <Layout style={styles.hairline} />
-          <Button title="Checkout" onPress={this.onPress} />
+          <Button size="large" onPress={this.onPress}>
+            Checkout
+          </Button>
         </Layout>
       </Layout>
     );
@@ -49,4 +49,4 @@ const mapStateToProps = (state: { cart: { cart: any; total: any } }) => ({
   cartTotal: state.cart.total,
 });
 
-export default connect(mapStateToProps, {emptyCart})(Cart);
+export default connect(mapStateToProps, { emptyCart })(Cart);

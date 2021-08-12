@@ -20,7 +20,6 @@ class CartList extends Component<CartProps, CartState> {
   render() {
     const { title, cartItems, cartTotal } = this.props;
     return (
-      <View style={styles.container}>
         <View style={styles.container}>
           <Text style={styles.title}>{title}</Text>
           <FlatList
@@ -28,9 +27,10 @@ class CartList extends Component<CartProps, CartState> {
             renderItem={this.renderItem}
             keyExtractor={(item) => item.name}
           />
+          <View style={styles.hairline} />
           <Text style={styles.text}>Total: $ {cartTotal.toFixed(2)}</Text>
+          <View style={styles.hairline} />
         </View>
-      </View>
     );
   }
 }
@@ -40,14 +40,21 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: StatusBar.currentHeight || 0,
   },
+  text: {
+    textAlign: 'center',
+    fontSize: 22,
+  },
   title: {
     fontSize: 28,
     fontWeight: 'bold',
     textAlign: 'center',
   },
-  text: {
-    textAlign: 'center',
-    fontSize: 18,
+  hairline: {
+    backgroundColor: '#A2A2A2',
+    height: 2,
+    marginBottom: 5,
+    marginTop: 5,
+    width: '100%',
   },
 });
 

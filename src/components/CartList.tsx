@@ -8,6 +8,7 @@ interface CartProps {
   title: string;
   cartItems: any;
   cartTotal: number;
+  cartQty: number;
 }
 
 interface CartState {}
@@ -18,19 +19,20 @@ class CartList extends Component<CartProps, CartState> {
   );
 
   render() {
-    const { title, cartItems, cartTotal } = this.props;
+    const { title, cartItems, cartTotal, cartQty } = this.props;
     return (
-        <View style={styles.container}>
-          <Text style={styles.title}>{title}</Text>
-          <FlatList
-            data={cartItems}
-            renderItem={this.renderItem}
-            keyExtractor={(item) => item.name}
-          />
-          <View style={styles.hairline} />
-          <Text style={styles.text}>Total: $ {cartTotal.toFixed(2)}</Text>
-          <View style={styles.hairline} />
-        </View>
+      <View style={styles.container}>
+        <Text style={styles.title}>{title}</Text>
+        <FlatList
+          data={cartItems}
+          renderItem={this.renderItem}
+          keyExtractor={(item) => item.name}
+        />
+        <View style={styles.hairline} />
+        <Text style={styles.text}>Total: $ {cartTotal.toFixed(2)}</Text>
+        <Text style={styles.text}>Cart Qty: {cartQty}</Text>
+        <View style={styles.hairline} />
+      </View>
     );
   }
 }
@@ -61,6 +63,7 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state: { cart: { cartItems: any[]; total: any } }) => ({
   cartItems: state.cart.cartItems,
   cartTotal: state.cart.total,
+  cartQty: state.cart.qty,
 });
 
 export default connect(mapStateToProps)(CartList);

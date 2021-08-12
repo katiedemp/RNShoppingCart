@@ -1,15 +1,16 @@
 import { ADD_TO_CART, EMPTY_CART, REMOVE_FROM_CART } from '../actions/types';
 
-const initialState: { cartItems: any[]; total: number } = {
+const initialState: { cartItems: any[]; total: number; qty: number } = {
   cartItems: [],
   total: 0,
+  qty: 0,
 };
 
 export default function (
   state = initialState,
   action: {
     type: any;
-    payload: { name: any; price: number; index: number; item: { total: number; }; }
+    payload: { name: any; price: number; qty: number; index: number; item: { total: number; qty: number; }; }
   }
 ) {
   switch (action.type) {
@@ -32,6 +33,7 @@ export default function (
               : x
           ),
           total: state.total + action.payload.price,
+          qty: state.qty + 1,
         };
       } else {
         return {
@@ -48,6 +50,7 @@ export default function (
             },
           ],
           total: state.total + action.payload.price,
+          qty: state.qty + 1,
         };
       }
     case EMPTY_CART:
@@ -55,12 +58,14 @@ export default function (
         ...state,
         cartItems: [],
         total: 0,
+        qty: 0,
       };
     case REMOVE_FROM_CART:
       return {
         ...state,
         cartItems: state.cartItems.filter((item, i) => i !== action.payload.index),
         total: state.total - action.payload.item.total,
+        qty: state.qty - action.payload.item.qty,
       };
     default:
       return state;

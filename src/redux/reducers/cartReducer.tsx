@@ -10,7 +10,6 @@ export default function (
   action: {
     type: any;
     payload: {
-      id: number;
       price: number;
       index: number;
       name: string;
@@ -21,7 +20,7 @@ export default function (
 ) {
   switch (action.type) {
     case ADD_TO_CART:
-      const inCart = state.cartItems.some((x) => x.id === action.payload.id);
+      const inCart = state.cartItems.some((x) => x.name === action.payload.name);
       console.log(inCart);
       console.log(state.cartItems);
       if (inCart) {
@@ -29,7 +28,7 @@ export default function (
         return {
           ...state,
           cartItems: state.cartItems.map((x) =>
-            x.id === action.payload.id
+            x.name === action.payload.name
               ? {
                   // found item, shallow copy item and update quantity property
                   ...x,
@@ -48,7 +47,6 @@ export default function (
             ...state.cartItems,
             // add new cart item
             {
-              id: action.payload.id,
               qty: 1,
               name: action.payload.name,
               price: action.payload.price,

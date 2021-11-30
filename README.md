@@ -32,15 +32,14 @@ npx react-native run-ios
 ```
 
 ## Extra Notes
-- The cart will need to keep its state during app loads / refreshes
-- List Products – these should always be listed to allow adding of products until checkout
-- Products should be listed in this format: product name, price, button to add product
-- Must be able to add a product to the cart
-- Must be able to view number of current products in the cart
-- Cart products should be listed in this format: product name, price, quantity, total, remove button
-- Product totals should be tallied to give an overall total
-- Must be able to remove a product from the cart
-- Adding an existing product will only update existing cart product quantity (e.g. adding the same product
-twice will NOT create two cart items)
-- All prices should be displayed to 2 decimal places
-- Use best practices
+- The cart will keep its state during app loads / refreshes
+- List Products – should always be listed to allow adding of products until checkout
+- Products are listed in this format: product name, price, button to add product
+- Able to add a product to the cart
+- Able to view number of current products in the cart
+- Cart products listed in this format: product name, price, quantity, total, remove button
+- Product totals tallied to give an overall total
+- Able to remove a product from the cart
+- Adding an existing product only updates existing cart product quantity (e.g. adding the same product
+twice does not create two cart items)
+- All prices displayed to 2 decimal places
